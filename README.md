@@ -22,7 +22,6 @@ The exercise asked me to:
 ### ✔ Show clean, readable code  
 ### ✔ Use an object-oriented approach  
 ### ✔ Include error handling  
-### ✔ Submit within 72 hours  
 
 ---
 
@@ -42,7 +41,7 @@ The backend:
   - `list_tasks_advanced(query=None)`
 - Extracts and normalizes only the required four fields  
 - Returns a clean JSON response to the frontend  
-- Stores the UAC token securely in environment variables  
+- Ask UAC token and exports variable securely
 - Provides two endpoints:
   - `/api/tasks/basic`
   - `/api/tasks/advanced`
@@ -207,7 +206,7 @@ cd frontend
 - Clean spacing  
 
 ### Missing Fields
-- Displayed as `"–"`  
+- Displayed as `" "`  
 
 ---
 
