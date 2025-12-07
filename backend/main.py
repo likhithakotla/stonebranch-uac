@@ -31,7 +31,8 @@ def get_task_service() -> TaskService:
         return TaskService(client)
     except UacConnectionError as ex:
         raise RuntimeError(str(ex))
-
+    
+# Root endpoint
 @app.get("/")
 def root():
     return {
@@ -43,6 +44,9 @@ def root():
             "docs": "/docs",
         },
     }
+# -------------------------------------------------------
+# API ENDPOINTS
+# -------------------------------------------------------
 
 @app.get("/api/tasks/basic", response_model=List[TaskInfoSchema])
 def list_tasks_basic(service: TaskService = Depends(get_task_service)):
