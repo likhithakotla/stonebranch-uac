@@ -36,6 +36,23 @@ I built a **two-layer architecture**:
 The backend:
 
 - Communicates with UAC using the official `uac-api` wrapper  
+- [From the `uac-api` package, I could see :
+    - `uac.tasks.list_tasks()`  
+    - `uac.tasks.list_tasks_advanced()`  
+    - `uac.tasks.get_task()`  
+    - `uac.tasks.create_task()`  
+    - `uac.tasks.update_task()`  
+    - `uac.tasks.delete_task()`  
+    - And other namespaces such as:
+        - `AgentClusters`
+        - `Triggers`
+        - `TaskInstances`
+
+For this project, the required endpoints were:
+
+- `list_tasks()`  
+- `list_tasks_advanced()`  ]
+
 - Retrieves tasks using:
   - `list_tasks(payload)`  
   - `list_tasks_advanced(query=None)`
