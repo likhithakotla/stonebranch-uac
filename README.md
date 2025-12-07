@@ -24,6 +24,28 @@ The exercise asked me to:
 ### ✔ Include error handling  
 
 ---
+### API Methods Reviewed (from `uac-api` documentation)
+[  
+From the `uac-api` package, I reviewed the following available methods:
+
+- `uac.tasks.list_tasks()`
+- `uac.tasks.list_tasks_advanced()`
+- `uac.tasks.get_task()`
+- `uac.tasks.create_task()`
+- `uac.tasks.update_task()`
+- `uac.tasks.delete_task()`
+
+Other namespaces available:
+- `AgentClusters`
+- `Triggers`
+- `TaskInstances`
+
+For this project, I used only:
+- `list_tasks()`
+- `list_tasks_advanced()`
+]
+---
+
 
 # 📌 2. My Solution Overview (How I Designed It)
 
@@ -36,23 +58,6 @@ I built a **two-layer architecture**:
 The backend:
 
 - Communicates with UAC using the official `uac-api` wrapper  
-- [From the `uac-api` package, I could see :
-    - `uac.tasks.list_tasks()`  
-    - `uac.tasks.list_tasks_advanced()`  
-    - `uac.tasks.get_task()`  
-    - `uac.tasks.create_task()`  
-    - `uac.tasks.update_task()`  
-    - `uac.tasks.delete_task()`  
-    - And other namespaces such as:
-        - `AgentClusters`
-        - `Triggers`
-        - `TaskInstances`
-
-For this project, the required endpoints were:
-
-- `list_tasks()`  
-- `list_tasks_advanced()`  ]
-
 - Retrieves tasks using:
   - `list_tasks(payload)`  
   - `list_tasks_advanced(query=None)`
@@ -186,7 +191,6 @@ chmod +x run_backend.sh
 - Starts FastAPI on **http://127.0.0.1:8000**
 
 **Backend URLs**
-- http://127.0.0.1:8000  
 - http://127.0.0.1:8000/docs  
 - http://127.0.0.1:8000/api/tasks/basic  
 - http://127.0.0.1:8000/api/tasks/advanced  
