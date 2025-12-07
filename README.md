@@ -229,3 +229,11 @@ chmod +x run_frontend.sh
 - No credential exposure to browser or logs  
 
 ---
+
+## 📍 UI Preview
+
+Below are example screenshots of the UI:
+
+### Task Cards View
+![Task Cards](images/1.png)
+![Buttons](images/2.png)
