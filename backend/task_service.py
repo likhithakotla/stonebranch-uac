@@ -24,7 +24,8 @@ class TaskService:
             "updatedTimeType": "Offset",
             "updatedTime": "-30d",
         }
-
+        # Fetch tasks from UAC and map to TaskInfo and return list of them
+        # Handle errors appropriately
         try:
             response = self.uac.tasks.list_tasks(payload=payload)
         except Exception as ex:
@@ -33,7 +34,7 @@ class TaskService:
         raw_tasks = response if isinstance(response, list) else response.get("data", [])
 
         results = []
-
+        # Map each raw task to TaskInfo
         for t in raw_tasks:
             name = t.get("name")
             description = t.get("description") or t.get("summary")
@@ -55,6 +56,8 @@ class TaskService:
     # ADVANCED API: list_tasks_advanced()
     # -------------------------------------------------------
     def fetch_tasks_advanced(self) -> List[TaskInfo]:
+        # Fetch tasks from UAC and map to TaskInfo and return list of them
+        # Handle errors appropriately
         try:
             response = self.uac.tasks.list_tasks_advanced()
         except Exception as ex:
@@ -63,7 +66,7 @@ class TaskService:
         raw_tasks = response if isinstance(response, list) else response.get("data", [])
 
         results = []
-
+        # Map each raw task to TaskInfo
         for t in raw_tasks:
             name = t.get("name")
             description = t.get("description") or t.get("summary")

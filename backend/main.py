@@ -39,10 +39,10 @@ def list_tasks_basic(service: TaskService = Depends(get_task_service)):
     Returns tasks using list_tasks (basic summary).
     Maps name and description only; agent/command are None.
     """
-    try:
+    try: # Fetch tasks from service
         tasks = service.fetch_tasks_basic()
         return [TaskInfoSchema.from_task_info(t) for t in tasks]
-    except Exception as ex:
+    except Exception as ex: # Handle errors appropriately
         raise HTTPException(status_code=500, detail=f"Error fetching basic tasks: {ex}")
 
 
@@ -57,8 +57,8 @@ def list_tasks_advanced(service: TaskService = Depends(get_task_service)):
       agent or agentVar -> Agent Name
       command -> Command
     """
-    try:
+    try: # Fetch tasks from service
         tasks = service.fetch_tasks_advanced()
         return [TaskInfoSchema.from_task_info(t) for t in tasks]
-    except Exception as ex:
+    except Exception as ex: # Handle errors appropriately
         raise HTTPException(status_code=500, detail=f"Error fetching advanced tasks: {ex}")
