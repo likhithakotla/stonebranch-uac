@@ -95,10 +95,10 @@ UAC returns many detailed fields, but the requirement was to map only four.
 
 ### ✔ My exact mapping:
 
--name → Task Name
--summary / description → Task Description
--agent or agentVar → Agent Name
--command → Command
+- name → Task Name
+- summary / description → Task Description
+- agent → Agent Name
+- command → Command
 
 
 ### ✔ If a field is missing in UAC:
@@ -187,7 +187,7 @@ chmod +x run_backend.sh
 ```
 
 - Loads `UAC_URL` from environment  
-- Loads or securely prompts for `UAC_TOKEN`  
+- securely prompts for `UAC_TOKEN`  
 - Starts FastAPI on **http://127.0.0.1:8000**
 
 **Backend URLs**
