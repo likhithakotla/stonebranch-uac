@@ -32,6 +32,17 @@ def get_task_service() -> TaskService:
     except UacConnectionError as ex:
         raise RuntimeError(str(ex))
 
+@app.get("/")
+def root():
+    return {
+        "message": "Stonebranch UAC backend is running.",
+        "description": "Use the endpoints below to retrieve UAC tasks.",
+        "endpoints": {
+            "basic_tasks": "/api/tasks/basic",
+            "advanced_tasks": "/api/tasks/advanced",
+            "docs": "/docs",
+        },
+    }
 
 @app.get("/api/tasks/basic", response_model=List[TaskInfoSchema])
 def list_tasks_basic(service: TaskService = Depends(get_task_service)):
