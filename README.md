@@ -62,7 +62,7 @@ The frontend:
 - Displays tasks as **cards/boxes** with warm styling  
 - Allows switching between Basic and Advanced APIs  
 - Has hover animations and clean colors  
-- Shows “–” when a field is missing  
+- Shows “ ” when a field is missing  
 
 This keeps the UI extremely simple but visually clean and professional.
 
@@ -82,7 +82,7 @@ UAC returns many detailed fields, but the requirement was to map only four.
 
 ### ✔ If a field is missing in UAC:
 - Backend returns `null`
-- Frontend displays `"–"`
+- Frontend displays `""`
 
 This ensures stable behavior regardless of differences between UAC environments.
 
@@ -115,7 +115,7 @@ These two calls satisfy the exact requirement to retrieve tasks and show mapped 
 - Injects TaskService  
 
 ### `uac_client.py`
-- Reads `UAC_URL` and `UAC_TOKEN` from environment  
+- Reads `UAC_URL`  from environment  and `UAC_TOKEN` from terminal
 - Creates UniversalController client  
 - Ensures token is **not exposed** and authentication is validated  
 
@@ -156,84 +156,75 @@ Backend dependencies.
 
 ---
 
-# 📌 7. Running the Project (Reviewer Instructions)
+## 📍 7. Running the Project
 
-I created **two run scripts** to make this extremely easy:
-
----
-
-## ▶️ Step 1 — Start Backend
-
+### ▶️ Start Backend
 ```bash
 cd backend
 ./run_backend.sh
+```
 
-If UAC_TOKEN is not set, the script will securely prompt you to enter it (not visible while typing).
+- Loads `UAC_URL` from environment  
+- Loads or securely prompts for `UAC_TOKEN`  
+- Starts FastAPI on **http://127.0.0.1:8000**
 
-Backend starts at:
+**Backend URLs**
+- http://127.0.0.1:8000  
+- http://127.0.0.1:8000/docs  
+- http://127.0.0.1:8000/api/tasks/basic  
+- http://127.0.0.1:8000/api/tasks/advanced  
 
-URL	Purpose
-http://127.0.0.1:8000
-	Backend root
-http://127.0.0.1:8000/docs
-	Swagger API documentation
-http://127.0.0.1:8000/api/tasks/basic
-	Basic list (summary API)
-http://127.0.0.1:8000/api/tasks/advanced
-	Advanced list (detailed API)
+---
 
-▶️ Step 2 — Start Frontend
-
-Open another terminal:
-
+### ▶️ Start Frontend
+```bash
 cd frontend
 ./run_frontend.sh
+```
 
+**Frontend URL**
+- http://127.0.0.1:9000  
 
-Frontend starts at:
+---
 
-➡ http://127.0.0.1:9000
+## 📍 8. UI Output (What You See)
 
-📌 8. What You Will See in the UI
+### Buttons
+- **Load Basic (list_tasks)**  
+- **Load Advanced (list_tasks_advanced)**  
 
-When you open:
+### Task Card Fields
+- **Task Name**  
+- **Description**  
+- **Agent**  
+- **Command**  
 
-➡ http://127.0.0.1:9000
+### UI Style
+- Card layout  
+- Warm beige palette  
+- Soft shadows  
+- Hover animations  
+- Clean spacing  
 
-You will see:
+### Missing Fields
+- Displayed as `"–"`  
 
-⭐ Two buttons:
+---
 
-Load Basic (list_tasks)
+## 📍 9. Security: UAC Token Handling
 
-Load Advanced (list_tasks_advanced)
+### Token Protection
+- **Never hardcoded**  
+- **Never stored** in frontend  
+- **Never logged**  
+- **Not included** in repository  
 
-⭐ Cards showing:
-Task Name:        ...
-Description:      ...
-Agent:            ...
-Command:          ...
+### Token Source
+- `UAC_TOKEN` read securely via hidden prompt in `run_backend.sh`  
 
-⭐ Clean warm styling:
+### Backend-Only Access
+- Token used **only server-side**  
+- Frontend receives **sanitized output only**  
+- No credential exposure to browser or logs  
 
-Boxes/cards
-
-Soft shadows
-
-Animations
-
-Consistent spacing
-
-📌 9. Security: UAC Token Handling
-
-Token is never written in code
-
-It is never stored in frontend
-
-It is never logged
-
-Only loaded through environment variables or prompt
-
-Backend communicates with UAC securely
-
-This follows best practices for sensitive credentials.
+---
