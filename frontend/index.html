@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stonebranch UAC - Task Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Stonebranch UAC - Task Viewer</h1>
+
+    <div class="controls">
+        <button id="loadBasicBtn">Load Basic (list_tasks)</button>
+        <button id="loadAdvancedBtn">Load Advanced (list_tasks_advanced)</button>
+    </div>
+
+    <div id="info"></div>
+    <div id="error"></div>
+
+    <table id="taskTable">
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Description</th>
+                <th>Agent</th>
+                <th>Command</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows inserted by app.js -->
+        </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>
