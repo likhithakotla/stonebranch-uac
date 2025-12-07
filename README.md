@@ -160,6 +160,7 @@ Backend dependencies.
 ### ▶️ Start Backend
 ```bash
 cd backend
+chmod +x run_backend.sh
 ./run_backend.sh
 ```
 
@@ -178,6 +179,7 @@ cd backend
 ### ▶️ Start Frontend
 ```bash
 cd frontend
+chmod +x run_frontend.sh
 ./run_frontend.sh
 ```
 
